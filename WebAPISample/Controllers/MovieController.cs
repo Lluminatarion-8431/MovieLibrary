@@ -37,15 +37,17 @@ namespace WebAPISample.Controllers
 
         // POST api/movie
         [HttpPost]
-        public IActionResult Post([FromBody]Movie value)
+        public IActionResult Post([FromBody]Movie movie)
         {
             // Create movie in db logic
+            _context.Movies.Add(movie);
+            _context.SaveChanges();
             return Ok();
         }
 
         // PUT api/movie
         [HttpPut]
-        public IActionResult Put([FromBody] Movie movie)
+        public IActionResult Put(int id, [FromBody] Movie movie)
         {
             // Update movie in db logic
             return Ok();
