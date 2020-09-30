@@ -39,9 +39,13 @@ namespace WebAPISample.Controllers
 
         // POST api/movie
         [HttpPost]
-        public IActionResult Post([FromBody]Movie movie)
+        public IActionResult Post([FromBody]Movie value)
         {
             // Create movie in db logic
+            Movie movie = new Movie();
+            movie.Title = movie.Title;
+            movie.Genre = movie.Genre;
+            movie.Director = movie.Director;
             _context.Movies.Add(movie);
             _context.SaveChanges();
             return Ok(movie);
@@ -52,8 +56,6 @@ namespace WebAPISample.Controllers
         public IActionResult Put(int id, [FromBody] Movie movie)
         {
             // Update movie in db logic
-
-
            var moviesInDb = _context.Movies.Where(m => m.MovieId == id).SingleOrDefault();
             moviesInDb.Title = movie.Title;
             moviesInDb.Director = movie.Director;
