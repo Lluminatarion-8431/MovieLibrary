@@ -43,9 +43,9 @@ namespace WebAPISample.Controllers
         {
             // Create movie in db logic
             Movie movie = new Movie();
-            movie.Title = movie.Title;
-            movie.Genre = movie.Genre;
-            movie.Director = movie.Director;
+            movie.Title = value.Title;
+            movie.Genre = value.Genre;
+            movie.Director = value.Director;
             _context.Movies.Add(movie);
             _context.SaveChanges();
             return Ok(movie);
