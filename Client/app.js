@@ -62,3 +62,21 @@ function getMovieById(){
         }
     });
 }
+
+function changeInput(selected){
+    
+    $('#update-title').val(selected.title);
+    $('#update-director').val(selected.director);
+    $('#update-genre').val(selected.genre);
+}
+
+$('#movieId').change(getById);
+
+$(document).ready(function() {
+    $('#myInput').on('keyup', function() {
+        var value = $(this).val().toLowerCase();
+        $('#movies tr').filter(function () {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+});
