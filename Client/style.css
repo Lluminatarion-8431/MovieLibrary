@@ -13,7 +13,7 @@ thead{
 }
 tbody {
  
-    background-color: rgb(199, 233, 233);
+    background-color: rgb(231, 63, 63);
     text-align: center; 
     height: 600px;   
 }
@@ -29,11 +29,11 @@ h5 {
 .container {
     padding-top: 20px;
     padding-bottom: 20px;
-    background-color: rgb(45, 161, 161);
+    background-color: rgb(197, 59, 231);
 }
 .body {
     
-    background-color: teal;
+    background-color: rgb(31, 130, 243);
 }
 .banner {
     font-size: 24px;

@@ -24,6 +24,13 @@ function createTable(){
     });
 
 
+}
+
+$(document).ready(createTable);
+
+
+
+
 function processForm( e ){
     var data = {
         Title : this["title"].value,
@@ -63,39 +70,48 @@ function processForm( e ){
 $('#my-form').submit( processForm );
 
 
-function getMovieById(){
-    var id = $('#movieId').val();
-    var movie;
-    $.ajax({
-        url: 'https://localhost:44325/api/movie/' + id,
-        dataType: 'json',
-        type: 'get',
-        contentType: 'application/json',
-        success: function( data, textStatus, jQxhr ){
-            movie = data;
-            console.log(movie);
-            changeInput(movie);           
-        },
-        error: function( jqXhr, textStatus, errorThrown ){
-            console.log( errorThrown );
-        }
-    });
-}
 
-function changeInput(selected){
+
+
+    function getMovieById(){
+        var id = $('#movieId').val();
+        var movie;
+        $.ajax({
+            url: 'https://localhost:44325/api/movie/' + id,
+            dataType: 'json',
+            type: 'get',
+            contentType: 'application/json',
+            success: function( data, textStatus, jQxhr ){
+                movie = data;
+                console.log(movie);
+                changeInput(movie);           
+            },
+            error: function( jqXhr, textStatus, errorThrown ){
+                console.log( errorThrown );
+            }
+        });
+    }
     
-    $('#update-title').val(selected.title);
-    $('#update-director').val(selected.director);
-    $('#update-genre').val(selected.genre);
-}
 
-$('#movieId').change(getById);
+    
 
-$(document).ready(function() {
-    $('#myInput').on('keyup', function() {
-        var value = $(this).val().toLowerCase();
-        $('#movies tr').filter(function () {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+
+
+
+    function changeInput(selected){
+    
+        $('#update-title').val(selected.title);
+        $('#update-director').val(selected.director);
+        $('#update-genre').val(selected.genre);
+    }
+    
+    $('#movieId').change(getById);
+    
+    $(document).ready(function() {
+        $('#myInput').on('keyup', function() {
+            var value = $(this).val().toLowerCase();
+            $('#movies tr').filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
         });
     });
-});
